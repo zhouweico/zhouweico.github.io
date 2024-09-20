@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">第 4 章 容器与 Kubernetes 入门 | ZHOUWEI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://zhouwei.co/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://zhouwei.co/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://zhouwei.co/docs/DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门"><meta data-rh="true" property="og:locale" content="zh"><meta data-rh="true" name="docusaurus_locale" content="zh"><meta data-rh="true" name="docsearch:language" content="zh"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="第 4 章 容器与 Kubernetes 入门 | ZHOUWEI"><meta data-rh="true" name="description" content="本章讨论容器和Kubernetes的基本概念，包括它们的体系结构和关键组件。我们了解虚拟机和容器之间的区别，并回顾虚拟机的缺点。我们将使用容器部署一个简单的应用程序，并使用Kubernetes对其进行编排。"><meta data-rh="true" property="og:description" content="本章讨论容器和Kubernetes的基本概念，包括它们的体系结构和关键组件。我们了解虚拟机和容器之间的区别，并回顾虚拟机的缺点。我们将使用容器部署一个简单的应用程序，并使用Kubernetes对其进行编排。"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://zhouwei.co/docs/DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门"><link data-rh="true" rel="alternate" href="https://zhouwei.co/docs/DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门" hreflang="zh"><link data-rh="true" rel="alternate" href="https://zhouwei.co/docs/DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://6AM3IH46PZ-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="ZHOUWEI RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="ZHOUWEI Atom Feed">
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" title="ZHOUWEI" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.37b61219.css">
+<script src="/assets/js/runtime~main.f08b04f4.js" defer="defer"></script>
+<script src="/assets/js/main.9fc046ad.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.jpg" alt="ZHOUWEI" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.jpg" alt="ZHOUWEI" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">ZHOUWEI</b></a></div><div class="navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/category/devops和站点可靠性工程简介">文档</a><a class="navbar__item navbar__link" href="/blog">博客</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="切换浅色/暗黑模式（当前为浅色模式）" aria-label="切换浅色/暗黑模式（当前为浅色模式）" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="搜索"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">搜索</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/docs/category/devops和站点可靠性工程简介">DevOps和站点可靠性工程简介</a><button aria-label="折叠侧边栏分类 &#x27;DevOps和站点可靠性工程简介&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 1 章 欢迎">第 1 章 欢迎</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 2 章 DevOps 与 SRE 简介">第 2 章 DevOps 与 SRE 简介</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 3 章 云计算入门">第 3 章 云计算入门</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 4 章 容器与 Kubernetes 入门">第 4 章 容器与 Kubernetes 入门</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 5 章 基础架构即代码（IaC）">第 5 章 基础架构即代码 (IaC)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 6 章 持续集与成持续交付（CICD）">第 6 章 持续集成与持续交付（CICD）</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 7 章 可观测性简介">第 7 章 可观测性简介</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/DevOps和站点可靠性工程简介/第 8 章 站点可靠性工程（SRE）">第 8 章 站点可靠性工程（SRE）</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/category/devops和站点可靠性工程简介"><span itemprop="name">DevOps和站点可靠性工程简介</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">第 4 章 容器与 Kubernetes 入门</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>第 4 章 容器与 Kubernetes 入门</h1></header>
+<h1>概述和学习目标</h1>
+<p>本章讨论容器和Kubernetes的基本概念，包括它们的体 系结构和关键组件。我们了解虚拟机和容器之间的区别，并回顾虚拟机的缺点。我们将使用容器部署一个简单的应用程序，并使用Kubernetes对其进行编排。</p>
+<p>在本章结束时，您应该能够:</p>
+<ul>
+<li>回顾容器和虚拟机之间的区别</li>
+<li>讨论集装箱化和Kubernetes的好处和能力</li>
+<li>解释对Kubernetes等容器编排工具的需求</li>
+</ul>
+<h1>什么是集容器？</h1>
+<p>容器彻底改变了应用程序的打包和部署。在当今快节奏的世界中，快速有效地部署软件应用程序的能力对于各种规模的企业都至关重要。容器已经成为一种革命性的技术，它通过为应用程序运行提供轻量级，便携式和隔离的环境来满足这一需求。</p>
+<p>把一个容器想象成一个标准化的盒子，它可以容纳你的应用程序需要运行的所有东西 -- 它的代码、库、运行时环境和系统配置。与虚拟机虚拟化整个硬件堆栈不同，容器与其他容器共享底层操作系统 (OS)，从而使它们更加轻巧和高效。</p>
+<h1>容器和虚拟机的区别</h1>
+<p>容器和虚拟机 (vm) 都在虚拟化领域中使用，但是它们具有不同的用途并具有独特的优势。通过了解容器和vm之间的差异，您可以确定哪种技术最适合您的特定需求。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="虚拟机-隔离和多功能">虚拟机: 隔离和多功能<a href="#虚拟机-隔离和多功能" class="hash-link" aria-label="虚拟机: 隔离和多功能的直接链接" title="虚拟机: 隔离和多功能的直接链接">​</a></h2>
+<p>虚拟机提供完全隔离的虚拟环境，并具有操作系统和所有必要的依赖项。每个VM都在管理程序上运行，该管理程序是抽象物理硬件并允许多个VM在单个物理计算机上共存的层。以下是虚拟机的一些关键特征:</p>
+<ul>
+<li>强隔离每个VM都作为一个独立的实体运行，具有自己的专用资源和一个单独  的OS实例。这种隔离使虚拟机高度安全，因为一个虚拟机中的漏洞不会影响其他虚拟机。</li>
+<li>兼容性虚拟机可以在同一硬件内运行不同的操作系统。这使得虚拟机具有通用性，并允许并行运行遗留应用程序或不同的操作系统版本。</li>
+<li>完全抽象虚拟机完全抽象底层硬件，提供硬件级虚拟化。这意味着虚拟机的运行就像它们在专用物理机器上运行一样，使它们能够完全控制虚拟环境。</li>
+<li>资源开销与容器相比，虚拟机消耗更多的资源，因为每个虚拟机需要一个单独的OS实例。与容器相比，这可能导致更高的基础设施成本和更慢的启动时间。</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="容器-轻巧高效">容器: 轻巧高效<a href="#容器-轻巧高效" class="hash-link" aria-label="容器: 轻巧高效的直接链接" title="容器: 轻巧高效的直接链接">​</a></h2>
+<p>容器提供了一种打包和运行具有其依赖关系的应用程序的方法，这些依赖关系与底层主机系统隔离。容器背后的核心思想是为传统vm提供轻巧高效的替代方案。以下是容器的一些关键特征:</p>
+<ul>
+<li>资源效率容器共享主机系统的操作系统 (OS) 内核，无需多个OS实例。这减少了开销并释放了资源，与vm相比，使容器的资源效率大大提高。</li>
+<li>快速启动和可扩展性容器几乎可以瞬间启动和停止，通常在几秒钟内。这种快速的启动时间使它们具有高度可伸缩性，并允许水平缩放，这意味着您可以轻松启动应用程序的多个实例来处理增加的工作负载。</li>
+<li>隔离和安全容器彼此隔离，并且与主机系统隔离，从而提供了强大的资源隔离。但是，由于它们共享OS内核，因此内核中的漏洞可能会影响主机上运行的所有容器。</li>
+<li>易于管理容器由于其轻量级的特性而更易于管理。它们可以毫不费力地部署 、更新和回滚，使其非常适合需要频繁更新和持续集成/持续部署 (CI/CD) 工作流程的应用程序。</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="选择哪一个">选择哪一个？<a href="#选择哪一个" class="hash-link" aria-label="选择哪一个？的直接链接" title="选择哪一个？的直接链接">​</a></h2>
+<p>容器和虚拟机之间的选择取决于您的特定用例和要求。以下是一些可能更合适的方案:</p>
+<ul>
+<li>开发和测试由于容器的敏捷性和易于管理，因此广泛用于开发和测试环境。它们允许开发人员创建可复制的环境并简化部署。</li>
+<li>微服务架构容器很适合基于微服务的体系结构，在这些体系结构中，应用程序被分解为小型的独立服务。容器的轻量级特性使单个服务的扩展和部署变得容易。</li>
+<li>遗留应用程序虚拟机对于运行可能与现代容器环境不兼容的遗留应用程序是优选的。虚拟机允许维护现有基础架构和运行应用程序，而无需进行重大修改。</li>
+<li>隔离要求高在严格隔离和安全性至关重要的场景中，与容器相比，虚拟机提供了更强大的保证。数据隐私至关重要的金融和医疗保健等行业通常会选择虚拟机。</li>
+</ul>
+<p>容器和虚拟机提供不同级别的隔离，资源效率和多功能性。容器擅长提供轻量级，可扩展且易于管理的环境，而虚拟机则提供了与不同操作系统的强大隔离和兼容性。通过了解两者之间的差异，您可以在根据需要选择正确的虚拟化技术时做出明智的决定。</p>
+<h1>集装箱简史</h1>
+<p>容器技术有着令人着迷的历史，其特点是创新改变了应用程序的开发，部署和管理方式。以下是一个简要概述:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Chroot" target="_blank" rel="noopener noreferrer">Chroot</a><br>
+<!-- -->隔离的概念可以追溯到Unix操作系统中的chroot系统调用，  该调用是在20世纪70年代中引入的。Chroot允许进程拥有自己的文件系统独立视图。</li>
+<li><a href="https://en.wikipedia.org/wiki/FreeBSD_jail" target="_blank" rel="noopener noreferrer">FreeBSD jail</a> (2000)FreeBSD引入了jail,它通过隔离进程、文件系统和网络提供了轻量级虚拟化。这是集装箱化的早期形式。</li>
+<li><a href="https://en.wikipedia.org/wiki/Solaris_Containers" target="_blank" rel="noopener noreferrer">Solaris containers</a> (2004)Sun Microsystems开发了Solaris containers，这是一种更高级的OS级虚拟化形式。它允许Solaris的多个实例在单个主机上运行，每个主机与其他主机隔离。</li>
+<li><a href="https://docs.kernel.org/admin-guide/cgroup-v1/cgroups.html" target="_blank" rel="noopener noreferrer">cgroups</a> 和 <a href="https://man7.org/linux/man-pages/man7/namespaces.7.html" target="_blank" rel="noopener noreferrer">名称空间</a> (2007)Linux内核引入了cgroups (控制组) 和命名空间，为容器化奠定了基础。这些功能启用了资源隔离 (cgroups) 和进程隔离 (命名空间)。</li>
+<li><a href="https://linuxcontainers.org/lxc/introduction/" target="_blank" rel="noopener noreferrer">LXC (Linux容器)</a> (2008)LXC是为Linux容器创建用户友好界面的首批尝试之一。它使用cgroups和名称空间来提供进程和资源隔离。</li>
+<li><a href="https://docs.docker.com/get-started/overview/" target="_blank" rel="noopener noreferrer">Docker</a> (2013)Docker通过使更广泛的受众可以访问容器技术，从而彻底改变了容器技术。Docker使用Dockerfiles引入了用户友好的命令行界面和标准化的容器映像。这允许开发人员以一致的方式打包应用程序及其依赖项。</li>
+<li><a href="https://kubernetes.io/docs/concepts/overview/" target="_blank" rel="noopener noreferrer">容器编排</a> (2014向前)随着微服务的兴起以及对容器高效管理和扩展的需求，容器编排工具如Kubernetes (最初由Google开发)  、Docker Swarm、Apache Mesos、或者哈西奇普的游牧民族获得了知名度。这些工具可自动执行容器化应用程序的部署、扩展和管理。</li>
+<li><a href="https://opencontainers.org/" target="_blank" rel="noopener noreferrer">OCI (开放集装箱倡议)</a> (2015)为了标准化容器格式和运行时，Docker和其他行业领导者创立了OCI。OCI规范定义容器镜像的开放容器格式 (OCF) 和容器运行时的开放容器运行时 (OCR)。</li>
+<li><a href="https://containerd.io/" target="_blank" rel="noopener noreferrer">Containerd</a> (2017)Docker将其容器运行时containerd捐赠给了云原生计算基金会 (CNCF)。Containerd现在已成为许多容器平台和编排工具的核心组件。</li>
+<li>替代品的崛起 (21世纪20年代)虽然Docker仍然很受欢迎，但containerd和containerd等替代容器运行时 <a href="https://podman.io/" target="_blank" rel="noopener noreferrer">Podman</a> 获得了吸引力。这些工具提供了灵活性，并解决了与Docker相关的一些问题。</li>
+</ul>
+<p>容器技术已经走了很长一段路，从简单的流程隔离发展为一个强大的生态系统，为现代云原生应用程序提供动力。随着容器编排，安全性和标准化工作的不断发展和改进，旅程将继续进行。</p>
+<h1>Docker: 引擎盖下有什么？</h1>
+<p>Docker是一个使用容器化技术来简化应用程序的开发，部署和扩展的平台。在引擎盖下，Docker依靠几个关键组件和技术来实现其功能。</p>
+<ul>
+<li><strong>Docker 引擎</strong><br>
+<!-- -->Docker Engine (通常简称为Docker) 是Docker技术的核心，它提供了创建和管理容器生命周期的必要功能。它的体系结构允许在容器中无缝开发，运输和运行应用程序。Docker引擎本质上是模块化的，由许多有助于容器生命周期管理的模块组成<!-- -->
+<ol>
+<li>容器Docker使用containerd作为其容器运行时。Containerd是一个行业标准的核心容器运行时，它提供了容器执行和管理的基本功能。它处理低级别的容器操作，如容器创建、执行和删除。</li>
+<li>runCcontainerd的核心是runC，它是行业标准的容器运行时。runC负责根据OCI (Open Container Initiative) 规范生成和运行容器。它处理容器生命周期，包括从容器映像创建和运行容器。</li>
+<li>libcontainerDocker最初使用libcontainer作为其容器执行库。但是，随着containerd的发展，libcontainer的功能被整合到containerd中。</li>
+</ol>
+</li>
+<li><strong>Docker 客户端</strong><br>
+<!-- -->Docker客户端是一个命令行工具，允许用户与Docker守护程序 (Docker引擎) 进行交互。用户向Docker客户端发出命令，然后该客户端与Docker守护程序进行通信，以执行诸如构建，运行和管理容器之类的操作。</li>
+<li><strong>Docker 镜像</strong><br>
+<!-- -->Docker映像是轻量级、独立和可执行的包，包括应用程序及其所有依赖项。图像是根据Dockerfile中定义的一组指令构建的。它们存储在注册表中，例如Docker Hub或私有注册表，并且可以轻松共享和分发。</li>
+<li><strong>Docker 注册表</strong><br>
+<!-- -->Docker映像存储在注册表中，注册表是用于共享和分发容器映像的存储库。Docker Hub是默认的公共注册表; 用户还可以设置私人注册表以供内部使用。当需要运行容器时，可以从注册表中提取图像。</li>
+<li><strong>Docker Compose</strong><br>
+<!-- -->Docker Compose是定义和运行多容器Docker应用程序的工具。它允许用户描述服务、网络和卷 <strong>docker-compose.yml</strong> 文件，便于定义具有多个组件的复杂应用程序。</li>
+<li><strong>Docker Swarm</strong><br>
+<!-- -->Docker Swarm是Docker的原生集群和编排解决方案。它允许用户创建和管理一群Docker节点，将它们变成单个虚拟Docker主机。Swarm支持跨多个容器的服务部署和扩展。</li>
+<li><strong>网络和存储驱动程  序</strong><br>
+<!-- -->Docker提供了各种网络和存储驱动程序，这些驱动程序允许容器相互之间以及与外部网络进行通信。可以根据应用程序的特定要求配置网络和存储驱动程序。</li>
+</ul>
+<p>了解这些组件可以深入了解Docker如何利用容器化来封装应用程序及其依赖关系，从而使它们可移植、可扩展且易于跨不同环境管理。</p>
+<h1>Podman: Docker的替代方案</h1>
+<p>Podman (Pod Manager) 是一个用于管理OCI (open Container Initiative) 容器和Pod的开源工具。它的体系结构和方法在几个关键方面与Docker有所不同，尤其是在没有守护程序的情况下如何运行。Podman是一个功能强大的容器管理工具，可以被认为是Docker引擎的潜在替代品。</p>
+<p>是什么使Podman与其他容器引擎有所不同？</p>
+<ul>
+<li>无守护建筑与需要中央守护进程 (dockerd) 来创建、运行和管理容器的Docker不同，Podman在无守护进程架构中运行。这意味着每个命令都在其过程中运行，通过减少攻击面并允许非root用户运行容器来提高安全性。</li>
+<li>根和无根模式<!-- -->
+<ul>
+<li>Root模式: Podman可以以root身份运行，类似于传统的Docker。此模式可完全访问系统的所有特性和功能。</li>
+<li>无根模式: Podman的重要功能之一是它能够在没有root权限的情况下运行容器。这增强了安全性，因为它降低了特权升级攻击的风险。</li>
+</ul>
+</li>
+<li>Fork/Exec模型的使用当使用Podman启动容器时，它会分叉自己，然后执行运行时 (如runc或crun)。每个容器都是其在主机上的进程或进程集，由内核直接管理，而不是由长时间运行的守护进程管理。</li>
+<li>与Docker的兼容性Podman旨在在命令行 (CLI) 语法方面与Docker兼容，使用户可以轻松地从Docker过渡到Podman。对于大多数基本的docker命令，您通常可以将Docker别名为podman，它们的功能也将相同。</li>
+<li>Pod 管理与Kubernetes类似，Podman也可以管理pod，pod是共享同一网络、IPC和PID命名空间的一个或多个容器的组。此功能使Podman与Kubernetes环境很好地保持一致。</li>
+<li>图像管理Podman使用与Docker相同的图像格式，这意味着它可以从Docker可以的任何容器注册表中提取和使用图像。它还使用与Docker相同的图像/存储格式。</li>
+<li>网络Podman支持多种组网模式，包括主机组网、网桥组网和容器组网。这些模式是每个容器处理的，可以设置为模仿Docker的网络配置。</li>
+<li>安全在无守护进程和通常无根模式下运行容器固有地降低了安全风险。此外，Podman还集成了SELinux，seccomp和linux内核本地提供的其他安全功能。</li>
+</ul>
+<p>总体而言，Podman的体系结构为管理容器提供了安全且用户友好的替代方案，尤其是在安全性至关重要的环境中。它的无守护和无根功能，以及与Docker的兼容性，使其成为容器化生态系统中的热门选择。</p>
+<h1>The Need for Container Orchestration</h1>
+<p>随着容器化在部署应用程序中变得越来越流行，对容器编排的需求也在增长。尽管单个容器具有许多优点，但在不同环境中管理大量容器可能很快变得复杂而麻烦。容器编排平台通过自动化容器化应用程序的部署、扩展和管理来解决这一挑战。</p>
+<p>以下是容器编排必不可少的一些关键原因:</p>
+<ol>
+<li><strong>自动化容器管理</strong><br>
+<!-- -->手动管理大量容器容易出错且耗时。容器编排平台自动执行许多任务，包括:<!-- -->
+<ul>
+<li>部署: Orchestrators可以自动将容器部署到集群中的不同节点，保证应用的可用和运行的顺畅。</li>
+<li>扩展: 协调器可以根据需求自动向上或向下扩展容器化应用程序，从而确保最佳的资源利用率。</li>
+<li>运行状况监控: 协调器可以监控容器的运行状况，如果容器失败，自动重启，确保应用正常运行时间。</li>
+<li>网络: 协调器可以为容器化应用程序配置和管理网络，确保它们可以相互通信和外部资源。</li>
+</ul>
+</li>
+<li><strong>简化复杂的工作流程</strong><br>
+<!-- -->容器编排平台可以帮助简化和简化复杂的工作流，例如持续集成和持续交付 (CI/CD) 管道。这些平台可以自动化容器化应用程序的构建、测试和部署，使开发人员可以专注于编写代码和交付价值。</li>
+<li><strong>提高资源利用率</strong><br>
+<!-- -->容器编排平台可以通过确保容器仅在需要时才运行来帮助提高资源利用率。这可以大大节省成本，尤其是在每小时计费资源的云环境中。</li>
+<li><strong>加强一致性和控制</strong><br>
+<!-- -->容器编排平台可以帮助加强对容器化应用程序的一致性和控制。这对于确保以一致的方式部署应用程序以及它们满足安全性和合规性要求非常重要。</li>
+<li><strong>启用多云部署</strong><br>
+<!-- -->容器编排平台可以实现多云部署，其中应用程序跨多个云提供商部署。这可以提供更大的灵活性和弹性，并减少对任何单个供应商的依赖。</li>
+</ol>
+<p>一些流行的容器编排平台有:</p>
+<ul>
+<li><a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer">Kubernetes</a><br>
+<!-- -->由于其可扩展性，灵活性和开源性质，它是最受欢迎的容器编排平台。它也被称为容器的事实上的编排平台。</li>
+<li><a href="https://docs.docker.com/engine/swarm/" target="_blank" rel="noopener noreferrer">Decker Swarm</a><br>
+<!-- -->Docker的本机容器编排平台，可轻松使用并与Docker生态系统集成。</li>
+<li><a href="https://mesos.apache.org/" target="_blank" rel="noopener noreferrer">Apache Mesos</a><br>
+<!-- -->一种分布式资源管理平台，也可用于容器编排，以其高性能和可伸缩性而闻名。</li>
+<li><a href="https://www.nomadproject.io/" target="_blank" rel="noopener noreferrer">Nomad</a><br>
+<!-- -->为云原生应用设计的轻量级、灵活的容器编排平台。</li>
+</ul>
+<h1>Kubernetes: 容器化应用程序的协调器</h1>
+<p>Kubernetes (通常缩写为k8s) 是一个开源平台，用于自动化容器化应用程序的部署，扩展和管理。它已成为容器编排的事实上的标准，为各个行业的大量应用程序提供动力。</p>
+<p>想象一下，你有一个大型乐团，有许多不同的乐器。每种乐器都发挥着自己独特的部分，但是它们都需要和谐地共同努力才能创造出优美的音乐。Kubernetes就像这个乐团的指挥一样，协调不同的容器化应用程序 (乐器)，以确保您的应用程序平稳高效地运行。</p>
+<p>以下是kubernetes核心功能的细分:</p>
+<ul>
+<li>Deployment: Kubernetes自动执行跨节点集群的容器化应用的部署。</li>
+<li>扩展: 它根据需求自动向上或向下扩展应用程序，确保最佳的资源利用率。</li>
+<li>负载平衡: Kubernetes在应用程序的不同实例之间平均分配流量，确保高可用性和响应能力。</li>
+<li>服务发现: 它使应用程序能够发现并相互通信，而不管它们在集群中的位置如何。</li>
+<li>运行状况监控: Kubernetes会监控应用的运行状况，如果应用失败，会自动重启。</li>
+<li>安全性: Kubernetes提供了一个强大的安全框架，用于管理访问控制和保护您的应用程序。</li>
+<li>自我修复: Kubernetes重新启动失败的容器，替换容器，杀死不响应您的用户定义的健康检查的容器，在客户准备好服务之前，不会向他们做广告。</li>
+<li>水平缩放: 使用简单的命令，使用UI或根据CPU使用情况自动向上和向下扩展应用程序。</li>
+</ul>
+<p>这是对kubernetes历史的快速回顾:</p>
+<ul>
+<li>2014: Kubernetes源自Google的内部容器管理系统Borg。</li>
+<li>2015: Kubernetes是根据Apache许可证2.0开源的。</li>
+<li>2016: 云原生计算基 金会 (CNCF) 采用Kubernetes作为毕业项目。</li>
+<li>2017: Kubernetes 1.0发布，标志着其发展的重要里程碑。</li>
+<li>2023: Kubernetes是占主导地位的容器编排平台，被全球数百万组织使用。</li>
+</ul>
+<p>Kubernetes成为领先的容器编排平台有以下几个原因:</p>
+<ul>
+<li>开源: Kubernetes可以自由使用和修改，允许与各种工具和技术进行定制和集成。</li>
+<li>可扩展: Kubernetes可以跨多个节点管理数千个容器，适合大规模应用。</li>
+<li>灵活: Kubernetes支持广泛的容器运行时间和容器映像，为您的应用程序开发提供了灵活性。</li>
+<li>社区驱动: Kubernetes拥有庞大而活跃的开发人员和用户社区，提供了宝贵的支持和资源。</li>
+<li>协作: DevOps强调打破开发和运营团队之间的孤岛，鼓励分担责任并改善沟通。</li>
+</ul>
+<h1>Kubernetes的关键组件</h1>
+<p>Kubernetes是一个功能强大的容器编排平台，由几个关键组件组成，共同管理和部署容器化应用程序。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="控制平面节点">控制平面节点<a href="#控制平面节点" class="hash-link" aria-label="控制平面节点的直接链接" title="控制平面节点的直接链接">​</a></h2>
+<p>Kubernetes中的控制平面节点在管理集群的状态和配置中起着至关重要的作用。他们负责对集群做出全局决策 (如调度)，以及检测和响应集群事件 (如在部署的 <strong>复制品</strong> 字段不满意)。以下是控制平面节点的关键组件:</p>
+<ul>
+<li>API服务器作为Kubernetes控制平面的前端。API服务器负责处理请求，验证请求并更新集群中的相应对象。它公开了Kubernetes API。</li>
+<li>集群数据存储-etcd它是集群中唯一有状态的部分，它将整个集群配置 (即所需状态和集群的当前状态) 保持不变。</li>
+<li>控制器管理器管理调节集群状态的控制器。控制器负责维护所需的状态并处理诸如节点管理，复制和端点之类的任务。</li>
+<li>调度程序根据资源可用性、约束和其他策略将pod分配给节点。调度程序做出决策，以确保工作负载在集群中均匀分布。</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="工作节点-迷你">工作节点 (迷你)<a href="#工作节点-迷你" class="hash-link" aria-label="工作节点 (迷你)的直接链接" title="工作节点 (迷你)的直接链接">​</a></h2>
+<p>Kubernetes中的工作节点是实际应用程序 (容器) 运行的机器 (物理或虚拟)。它们由控制平面管理，并执行请求的必要工作负载。每个工作节点都是Kubernetes集群的一部分，并具有协调和运行应用程序所需的组件。以下是工作节点的关键组件:</p>
+<ul>
+<li>库贝莱特在与控制平面节点的API服务器通信的每个节点上运行的代理。它确保容器在pod中运行，并向控制平面报告节点的状态。</li>
+<li>容器运行时负责管理节点上的整个容器生命周期。Containerd是领先的容器运行时之一。</li>
+<li>库比代理它是安装在集群中每个节点上的Kubernetes代理。它负责本地集群联网。它实现本地IPTABLES或IPVS规则来处理Pod网络上流量的路由和负载平衡。它监视服务对象及其端点发生的更改。如果发生更改，则将其转换为节点内部的实际网络规则。Kube-Proxy在安装过程中作为插件安装，通常作为DaemonSet创建。</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="pod">Pod<a href="#pod" class="hash-link" aria-label="Pod的直接链接" title="Pod的直接链接">​</a></h2>
+<p>pod是Kubernetes中最小的可部署单元，代表集群中正在运行的进程的单个实例。Pod封装一个或多个容器，共享网络和存储资源。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="副本集">副本集<a href="#副本集" class="hash-link" aria-label="副本集的直接链接" title="副本集的直接链接">​</a></h2>
+<p>管理pod的生命周期，并确保pod的副本数量始终在运行。它可以根据定义的配置向上或向下扩展pod的数量。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="部署">部署<a href="#部署" class="hash-link" aria-label="部署的直接链接" title="部署的直接链接">​</a></h2>
+<p>向应用程序提供声明性更新。用户定义所需状态，部署控制器更改实际状态以匹配所需状态，从而促进更新和回滚。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="服务">服务<a href="#服务" class="hash-link" aria-label="服务的直接链接" title="服务的直接链接">​</a></h2>
+<p>定义一组pod和访问它们的策略。服务允许群集中不同pod集之间进行通信，从而抽象出底层网络详细信息。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="存储卷">存储卷<a href="#存储卷" class="hash-link" aria-label="存储卷的直接链接" title="存储卷的直接链接">​</a></h2>
+<p>管理存储并为容器提供数据持久性。可以将卷附加到pod，从而允许数据在pod重新启动期间持续存在。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="命名空间">命名空间<a href="#命名空间" class="hash-link" aria-label="命名空间的直接链接" title="命名空间的直接链接">​</a></h2>
+<p>提供了一种将集群资源划分为多个虚拟集群的方法。命名空间对于组织和隔离集群中的资源很有用。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configmap和secret">ConfigMap和Secret<a href="#configmap和secret" class="hash-link" aria-label="ConfigMap和Secret的直接链接" title="ConfigMap和Secret的直接链接">​</a></h2>
+<p>ConfigMaps和Secrets用于与应用程序代码分开管理配置数据和敏感信息 (例如密码或API密钥)。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="kubernetes仪表板">Kubernetes仪表板<a href="#kubernetes仪表板" class="hash-link" aria-label="Kubernetes仪表板的直接链接" title="Kubernetes仪表板的直接链接">​</a></h2>
+<p>基于web的UI，用于可视化管理和监视Kubernetes集群。它提供了各种资源的图形表示，并允许用户与集群进行交互。</p>
+<hr>
+<p>了解这些组件的角色和交互对于在Kubernetes集群中有效部署和管理容器化应用程序至关重要。</p>
+<h1>Kubernetes不是什么</h1>
+<p>虽然Kubernetes是管理容器化应用程序的流行且功能强大的工具，但重要的是要了解它不是什么以及它不能做什么。</p>
+<ul>
+<li><strong>Kubernetes不是传统的虚拟化平台</strong><br>
+<!-- -->Kubernetes在容器编排级别运行，而不是在虚拟机级别运行。它不像VMware或KVM这样的虚拟机管理程序那样提供虚拟化。相反，它管理和编排容器化应用程序。</li>
+<li><strong>Kubernetes不是集装箱化平台</strong><br>
+<!-- -->虽然Kubernetes与容器一起工作，但它本身并不是容器化平台。它依赖容器运行时 (如containerd或Docker) 来管理和运行容器。Kubernetes专注于协调和自动化容器部署，扩展和管理。</li>
+<li><strong>Kubernetes不是Docker的替代品</strong><br>
+<!-- -->Kubernetes和Docker服务于不同的目的。Docker主要是一个构建、打包和分发容器的平台，而Kubernetes是一个编排平台，可以处理包括Docker在内的各种容器运行时。</li>
+<li><strong>Kubernetes不是PaaS (平台即服务)</strong><br>
+<!-- -->与传统的平台即服务 (PaaS) 产品相比，Kubernetes提供了更精细的控制。PaaS通常抽象掉基础设施细节，而Kubernetes允许用户定义和管理他们的基础设施，使其更适合复杂多样的应用程序体系结构。</li>
+<li><strong>Kubernetes不是配置管理工具</strong><br>
+<!-- -->虽然Kubernetes允许用户为应用程序定义配置，但它不是像Ansible或Puppet这样的配置管理工具。它专注于声明应用程序的期望状态并管理其生命周期，但它不处理通用配置管理任务。</li>
+<li><strong>Kubernetes本质上并不安全</strong><br>
+<!-- -->Kubernetes提供了一个强大的框架，但它不是安全性的灵丹妙药。用户必须实施安全最佳实践，配置网络策略，并定期更新其集群。Kubernetes中的安全是平台和用户之间的共同责任。</li>
+<li><strong>Kubernetes不仅适用于微服务</strong><br>
+<!-- -->虽然Kubernetes非常适合微服务体系结构，但它并不局限于它们。Kubernetes可以管理和协调各种应用程序类型，包括单片应用程序和遵循其他架构模式的应用程序。</li>
+<li><strong>Kubernetes不是一刀切的解决方案</strong><br>
+<!-- -->对于简单或小规模的应用，Kubernetes可能会过大。较小的项目可能会从更简单的解决方案中受益。Kubernetes专为需要可扩展性、弹性和灵活性的复杂分布式系统而设计。</li>
+</ul>
+<p>了解Kubernetes不是什么，有助于设定现实的期望，并指导用户根据其特定需求选择合适的工具。这是一个功能强大的编排平台，但必须考虑其功能是否与给定项目的要求一致。</p>
+<h1>开发容器技术</h1>
+<p>让我们看一下一些容器技术:</p>
+<ul>
+<li><a href="https://containerd.io/" target="_blank" rel="noopener noreferrer">Containerd</a><br>
+<!-- -->containerd虽然没有完全出现 (已经出现了几年)，但值得一提。它是一个核心容器运行时，最初是Docker的一部分，但已成为一个独立的项目和各种容器平台的关键组件。</li>
+<li><a href="https://podman.io/" target="_blank" rel="noopener noreferrer">Podman</a><br>
+<!-- -->它是一个开源容器管理工具，旨在提供无守护进程、无根的容器体验。它允许用户在不需要中央守护进程的情况下管理容器，使其成为Docker的轻量级替代方案。</li>
+<li><a href="https://docs.docker.com/build/buildkit/" target="_blank" rel="noopener noreferrer">Buildkit</a><br>
+<!-- -->它是一个用于构建容器图像的工具包。起源于Moby项目 (推进软件容器化运动的开源项目)，它提供了一种更加模块化和高效的构建容器映像的方式。它通常集成到容器构建系统中。</li>
+<li><a href="https://github.com/kata-containers" target="_blank" rel="noopener noreferrer">kata-container</a><br>
+<!-- -->这是一个开源项目，将轻量级虚拟机 (vm) 与容器的速度和可管理性相结合。它旨在提供vm的安全优势，同时保持容器的性能优势。</li>
+<li><a href="https://cri-o.io/" target="_blank" rel="noopener noreferrer">CRI-O</a><br>
+<!-- -->它是专门为Kubernetes设计的轻量级容器运行时。它实现了Kubernetes容器运行时接口 (CRI)，可以直接从Kubernetes启动容器，而不需要像Docker这样的完整容器编排平台。</li>
+<li><a href="https://kubevirt.io/" target="_blank" rel="noopener noreferrer">kubevirt</a><br>
+<!-- -->它扩展了Kubernetes，以支持与容器工作负载一起运行和管理虚拟机。这允许组织有一个统一的平台来管理虚拟机和容器。</li>
+<li><a href="https://firecracker-microvm.github.io/" target="_blank" rel="noopener noreferrer">Firecracker</a><br>
+<!-- -->由亚马逊网络服务 (AWS) 开发，Firecracker 是一种轻量级的开源虚拟化技术，专为无服务器计算而设计。通过将vm的安全性与容器的速度和效率相结合，它提供了容器和vm的好处。</li>
+<li><a href="https://opencontainers.org/" target="_blank" rel="noopener noreferrer">opencontainers (OCI)</a> 规格尽管不是一项特定的技术，但OCI在标准化容器格式和运行时方面仍然发挥着至关重要的作用。随着容器采用率的增长，遵守通用规范对于互操作性变得越来越重要。</li>
+<li><a href="https://github.com/buildpacks-community/kpack" target="_blank" rel="noopener noreferrer">Kpack</a><br>
+<!-- -->这是一个Kubernetes-native平台，用于构建和更新容器映像。它使映像构建过程自动化，使开发人员可以更轻松地直接在Kubernetes环境中创建和管理容器映像。</li>
+<li><a href="https://gvisor.dev/" target="_blank" rel="noopener noreferrer">Gvisor</a><br>
+<!-- -->它是由Google开发的用户空间内核，为容器提供了额外的隔离层。它增强了容器的安全性和隔离性，而没有与传统虚拟化相关的性能开销。</li>
+</ul>
+<h1>实验室4。Docker，Podman和Kubernetes</h1>
+<p><a href="https://www.yuque.com/attachments/yuque/0/2024/pdf/646294/1710900295220-5232a154-3c38-45cd-8d6d-8c3d6d5d27f0.pdf" target="_blank" rel="noopener noreferrer">asset-v1-LinuxFoundationX+LFS162x+1T2024+type@asset+block@Chapter_4_Lab_-_Docker__Podman_and_Kubernetes.pdf</a></p>
+<h1>第四章总结</h1>
+<p>本章概述了容器和Kubernetes，这是现代软件部署和编排领域中的重要工具。我们首先了解虚拟机及其容器的局限性和好处，容器是轻量级、可移植和自给自足的单元，旨在运行在任何地方。我们讨论了容器技术 (Docker是最受欢迎的示例) 如何帮助将应用程序与底层系统隔离，使它们更安全，更易于管理。然后，本章过渡到Kubernetes，这是一个开源平台，旨在自动部署，扩展和操作应用程序容器。介绍了Kubernetes的关键组件，包括控制平面和工作节点。强调了控制平面的职责，例如调度和维护群集状态，以及工作节点在运行实际应用程序中的作用。讨论了核心Kubernetes概念，例如pod，部署，服务和名称空间。这些构成了在Kubernetes上部署和管理应用程序的构建块。本章旨在为理解容器和Kubernetes在当今软件开发和部署环境中的关键作用提供基础。</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>标签：</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/docs/tags/dev-ops">DevOps</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/docs/tags/sre">SRE</a></li><li class="tag_QGVx"><a class="tag_zVej tagRegular_sFm0" href="/docs/tags/kubernetes">Kubernetes</a></li></ul></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/DevOps和站点可靠性工程简介/第 3 章 云计算入门"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">第 3 章 云计算入门</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/DevOps和站点可靠性工程简介/第 5 章 基础架构即代码（IaC）"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">第 5 章 基础架构即代码 (IaC)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#虚拟机-隔离和多功能" class="table-of-contents__link toc-highlight">虚拟机: 隔离和多功能</a></li><li><a href="#容器-轻巧高效" class="table-of-contents__link toc-highlight">容器: 轻巧高效</a></li><li><a href="#选择哪一个" class="table-of-contents__link toc-highlight">选择哪一个？</a></li><li><a href="#控制平面节点" class="table-of-contents__link toc-highlight">控制平面节点</a></li><li><a href="#工作节点-迷你" class="table-of-contents__link toc-highlight">工作节点 (迷你)</a></li><li><a href="#pod" class="table-of-contents__link toc-highlight">Pod</a></li><li><a href="#副本集" class="table-of-contents__link toc-highlight">副本集</a></li><li><a href="#部署" class="table-of-contents__link toc-highlight">部署</a></li><li><a href="#服务" class="table-of-contents__link toc-highlight">服务</a></li><li><a href="#存储卷" class="table-of-contents__link toc-highlight">存储卷</a></li><li><a href="#命名空间" class="table-of-contents__link toc-highlight">命名空间</a></li><li><a href="#configmap和secret" class="table-of-contents__link toc-highlight">ConfigMap和Secret</a></li><li><a href="#kubernetes仪表板" class="table-of-contents__link toc-highlight">Kubernetes仪表板</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/category/devops和站点可靠性工程简介">DevOps和站点可靠性工程简介</a></li></ul></div><div class="col footer__col"><div class="footer__title">社交网络</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://twitter.com/zhouweico" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/zhouweico" target="_blank" rel="noopener noreferrer" class="footer__link-item">Github<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about">关于</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2024 ZHOUWEI 保留所有权利</div></div></div></footer></div>
+</body>
+</html>
